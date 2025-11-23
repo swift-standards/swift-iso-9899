@@ -13,34 +13,59 @@ This package provides Swift access to mathematical functions defined in **ISO/IE
 - ISO 9899 specifies function prototypes, behavior, and semantics
 - This is the authoritative standard for mathematical function interfaces
 
-## Features
+## Complete ISO/IEC 9899:2018 Section 7.12 Coverage
+
+This package provides **complete coverage** of all mathematical functions defined in ISO/IEC 9899:2018 Section 7.12.
 
 ### Trigonometric Functions (Section 7.12.4)
 - `sin(_:)`, `cos(_:)`, `tan(_:)` - Basic trigonometric functions
 - `asin(_:)`, `acos(_:)`, `atan(_:)` - Inverse trigonometric functions
 - `atan2(_:_:)` - Arc tangent of y/x with quadrant information
 
+### Hyperbolic Functions (Section 7.12.5)
+- `sinh(_:)`, `cosh(_:)`, `tanh(_:)` - Hyperbolic functions
+- `asinh(_:)`, `acosh(_:)`, `atanh(_:)` - Inverse hyperbolic functions
+
 ### Exponential and Logarithmic Functions (Section 7.12.6)
-- `exp(_:)` - Compute e raised to the power x
-- `exp2(_:)` - Compute 2 raised to the power x
-- `log(_:)` - Compute natural logarithm (base e)
-- `log2(_:)` - Compute base-2 logarithm
-- `log10(_:)` - Compute base-10 logarithm
+- `exp(_:)`, `exp2(_:)` - Exponential functions (e^x, 2^x)
+- `log(_:)`, `log2(_:)`, `log10(_:)` - Logarithmic functions
+- `expm1(_:)`, `log1p(_:)` - High-precision variants for values near zero
 
 ### Power and Absolute-Value Functions (Section 7.12.7)
 - `pow(_:_:)` - Compute x raised to the power y
-- `sqrt(_:)` - Compute square root
-- `fabs(_:)` - Compute absolute value
-- `hypot(_:_:)` - Compute Euclidean distance (sqrt(x² + y²))
-- `cbrt(_:)` - Compute cube root
+- `sqrt(_:)`, `cbrt(_:)` - Square root and cube root
+- `fabs(_:)` - Absolute value
+- `hypot(_:_:)` - Euclidean distance (sqrt(x² + y²))
+
+### Error and Gamma Functions (Section 7.12.8)
+- `erf(_:)`, `erfc(_:)` - Error function and complementary error function
+- `tgamma(_:)`, `lgamma(_:)` - Gamma function and log gamma
 
 ### Rounding Functions (Section 7.12.9)
-- `ceil(_:)` - Round toward positive infinity
-- `floor(_:)` - Round toward negative infinity
-- `round(_:)` - Round to nearest integer (ties away from zero)
-- `trunc(_:)` - Round toward zero
+- `ceil(_:)`, `floor(_:)`, `trunc(_:)` - Directional rounding
+- `round(_:)` - Round to nearest (ties away from zero)
+- `rint(_:)`, `nearbyint(_:)` - Round using current rounding mode
+- `lrint(_:)`, `llrint(_:)` - Round and convert to integer
+- `lround(_:)`, `llround(_:)` - Round (ties away) and convert to integer
 
-These implement IEEE 754 roundToIntegral operations per Annex F.
+### Remainder Functions (Section 7.12.10)
+- `fmod(_:_:)` - Floating-point remainder
+- `remainder(_:_:)` - IEEE remainder
+- `remquo(_:_:_:)` - Remainder with quotient
+
+### Manipulation Functions (Section 7.12.11)
+- `copysign(_:_:)` - Copy sign between values
+- `nan(_:)`, `nanf(_:)` - Create NaN with payload
+- `nextafter(_:_:)`, `nexttoward(_:_:)` - Next representable value
+
+### Maximum, Minimum, and Difference (Section 7.12.12)
+- `fmax(_:_:)`, `fmin(_:_:)` - Maximum and minimum (NaN-aware)
+- `fdim(_:_:)` - Positive difference
+
+### Floating Multiply-Add (Section 7.12.13)
+- `fma(_:_:_:)` - Fused multiply-add with single rounding
+
+All functions implement IEEE 754 semantics per Annex F.
 
 ## Usage
 
