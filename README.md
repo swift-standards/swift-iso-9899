@@ -17,6 +17,14 @@ This package provides Swift access to mathematical functions defined in **ISO/IE
 
 This package provides **complete coverage** of all mathematical functions defined in ISO/IEC 9899:2018 Section 7.12.
 
+### Classification Functions (Section 7.12.3)
+- `fpclassify(_:)` - Classify floating-point value (normal, zero, subnormal, infinite, NaN)
+- `isfinite(_:)` - Test for finite value
+- `isinf(_:)` - Test for infinity
+- `isnan(_:)` - Test for NaN
+- `isnormal(_:)` - Test for normal value
+- `signbit(_:)` - Test sign bit
+
 ### Trigonometric Functions (Section 7.12.4)
 - `sin(_:)`, `cos(_:)`, `tan(_:)` - Basic trigonometric functions
 - `asin(_:)`, `acos(_:)`, `atan(_:)` - Inverse trigonometric functions
@@ -65,6 +73,23 @@ This package provides **complete coverage** of all mathematical functions define
 ### Floating Multiply-Add (Section 7.12.13)
 - `fma(_:_:_:)` - Fused multiply-add with single rounding
 
+### Comparison Macros (Section 7.12.14)
+- `isgreater(_:_:)` - Quiet > comparison (no exception on NaN)
+- `isgreaterequal(_:_:)` - Quiet >= comparison
+- `isless(_:_:)` - Quiet < comparison
+- `islessequal(_:_:)` - Quiet <= comparison
+- `islessgreater(_:_:)` - Quiet != comparison
+- `isunordered(_:_:)` - Test for unordered (NaN) arguments
+
+### Mathematical Constants
+- Fundamental: π, e, τ
+- Square roots: √2, √3, √5, 1/√2
+- Logarithms: ln(2), ln(10), log₂(e), log₁₀(e), log₂(10)
+- Golden ratio: φ
+- Angular conversions: degrees ↔ radians
+- Common π fractions: π/2, π/3, π/4, π/6, 2π
+- Euler-Mascheroni: γ
+
 All functions implement IEEE 754 semantics per Annex F.
 
 ## Usage
@@ -101,6 +126,23 @@ let floored = ISO_9899.Math.floor(2.7)  // 2.0
 let nearest = ISO_9899.Math.round(2.5)  // 3.0 (ties away from zero)
 let truncated = ISO_9899.Math.trunc(-2.7)  // -2.0
 
+// Classification functions
+let classification = ISO_9899.Math.fpclassify(1.0)  // .normal
+let isFinite = ISO_9899.Math.isfinite(.infinity)    // false
+let isNaN = ISO_9899.Math.isnan(.nan)                // true
+let signBit = ISO_9899.Math.signbit(-0.0)            // true
+
+// Comparison functions (quiet - no exception on NaN)
+let greater = ISO_9899.Math.isgreater(5.0, 3.0)     // true
+let lessOrGreater = ISO_9899.Math.islessgreater(.nan, 5.0)  // false
+let unordered = ISO_9899.Math.isunordered(.nan, 5.0)  // true
+
+// Mathematical constants
+let circumference = 2 * ISO_9899.Math.Constants.pi * radius
+let radians = degrees * ISO_9899.Math.Constants.degreesToRadians
+let sqrt2 = ISO_9899.Math.Constants.sqrt2
+let goldenRatio = ISO_9899.Math.Constants.phi
+
 // Works with Float too
 let f: Float = ISO_9899.Math.sin(Float.pi / 4)
 ```
@@ -136,6 +178,17 @@ let ceil = (2.3).c.ceil         // 3.0
 let floor = (2.7).c.floor       // 2.0
 let round = (2.5).c.round       // 3.0
 let trunc = (-2.7).c.trunc      // -2.0
+
+// Classification functions
+let classification = (1.0).c.fpclassify       // .normal
+let isFinite = Double.infinity.c.isfinite     // false
+let isNaN = Double.nan.c.isnan                // true
+let signBit = (-0.0).c.signbit                // true
+
+// Comparison functions (quiet - no exception on NaN)
+let greater = (5.0).c.isgreater(3.0)          // true
+let lessOrGreater = Double.nan.c.islessgreater(5.0)  // false
+let unordered = Double.nan.c.isunordered(5.0) // true
 
 // Works with Float too
 let y: Float = 1.5
