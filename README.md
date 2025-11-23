@@ -116,9 +116,11 @@ let ln = ISO_9899.Math.log(2.71828)  // 1.0
 let log2 = ISO_9899.Math.log2(1024.0)  // 10.0
 
 // Absolute value and additional power functions
-let abs = ISO_9899.Math.fabs(-3.14)  // 3.14
-let dist = ISO_9899.Math.hypot(3.0, 4.0)  // 5.0
-let cubeRoot = ISO_9899.Math.cbrt(27.0)  // 3.0
+let abs = ISO_9899.Math.fabs(-3.14)   // 3.14
+let dist = ISO_9899.Math.hypot(3.0, 4.0)   // 5.0
+let cubeRoot = ISO_9899.Math.cbrt(27.0)    // 3.0
+let max = ISO_9899.Math.fmax(3.0, 5.0)     // 5.0
+let min = ISO_9899.Math.fmin(3.0, 5.0)     // 3.0
 
 // Rounding functions
 let rounded = ISO_9899.Math.ceil(2.3)   // 3.0
@@ -127,15 +129,19 @@ let nearest = ISO_9899.Math.round(2.5)  // 3.0 (ties away from zero)
 let truncated = ISO_9899.Math.trunc(-2.7)  // -2.0
 
 // Classification functions
-let classification = ISO_9899.Math.fpclassify(1.0)  // .normal
-let isFinite = ISO_9899.Math.isfinite(.infinity)    // false
-let isNaN = ISO_9899.Math.isnan(.nan)                // true
-let signBit = ISO_9899.Math.signbit(-0.0)            // true
+let classification = ISO_9899.Math.fpclassify(1.0)    // .normal
+let isFinite = ISO_9899.Math.isfinite(.infinity)      // false
+let isNaN = ISO_9899.Math.isnan(.nan)                 // true
+let signBit = ISO_9899.Math.signbit(-0.0)             // true
 
 // Comparison functions (quiet - no exception on NaN)
-let greater = ISO_9899.Math.isgreater(5.0, 3.0)     // true
-let lessOrGreater = ISO_9899.Math.islessgreater(.nan, 5.0)  // false
+let greater = ISO_9899.Math.isgreater(5.0, 3.0)      // true
+let lessOrGreater = ISO_9899.Math.islessgreater(5.0, .nan)  // false
 let unordered = ISO_9899.Math.isunordered(.nan, 5.0)  // true
+
+// Integer-returning rounding
+let asInt = ISO_9899.Math.lround(2.5)                 // 3
+let asInt64 = ISO_9899.Math.llround(2.5)              // 3
 
 // Mathematical constants
 let circumference = 2 * ISO_9899.Math.Constants.pi * radius
@@ -169,9 +175,11 @@ let log = x.c.log               // 0.693147180...
 let log2 = x.c.log2             // 1.0
 
 // Absolute value and additional power functions
-let abs = (-x).c.fabs           // 2.0
+let abs = (-x).c.abs            // 2.0
 let dist = x.c.hypot(3.0)       // 3.60555127...
 let cube = x.c.cbrt             // 1.25992104...
+let maximum = x.c.max(5.0)      // 5.0
+let minimum = x.c.min(5.0)      // 2.0
 
 // Rounding functions
 let ceil = (2.3).c.ceil         // 3.0
@@ -180,15 +188,19 @@ let round = (2.5).c.round       // 3.0
 let trunc = (-2.7).c.trunc      // -2.0
 
 // Classification functions
-let classification = (1.0).c.fpclassify       // .normal
-let isFinite = Double.infinity.c.isfinite     // false
-let isNaN = Double.nan.c.isnan                // true
-let signBit = (-0.0).c.signbit                // true
+let classification = (1.0).c.classification          // .normal
+let isFinite = Double.infinity.c.isFinite            // false
+let isNaN = Double.nan.c.isNaN                       // true
+let hasNegativeSign = (-0.0).c.hasNegativeSign       // true
 
 // Comparison functions (quiet - no exception on NaN)
-let greater = (5.0).c.isgreater(3.0)          // true
-let lessOrGreater = Double.nan.c.islessgreater(5.0)  // false
-let unordered = Double.nan.c.isunordered(5.0) // true
+let greater = (5.0).c.isGreater(than: 3.0)           // true
+let lessOrGreater = (5.0).c.isNotEqual(to: .nan)     // false
+let unordered = Double.nan.c.isUnordered(with: 5.0)  // true
+
+// Integer-returning rounding
+let asInt = (2.5).c.roundToInt()                     // 3
+let asInt64 = (2.5).c.roundToInt64()                 // 3
 
 // Works with Float too
 let y: Float = 1.5

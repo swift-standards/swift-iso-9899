@@ -19,7 +19,7 @@ extension Float {
     /// let root = x.c.sqrt               // 1.41421356...
     /// let sine = x.c.sin                // 0.90929742...
     /// let log = x.c.log                 // 0.693147180...
-    /// let abs = (-x).c.fabs             // 2.0
+    /// let abs = (-x).c.abs              // 2.0
     /// ```
     ///
     /// ## See Also
@@ -185,7 +185,7 @@ extension Float.C {
     ///
     /// Delegates to ``ISO_9899/Math/fabs(_:)-92g9h``
     @_transparent
-    public var fabs: Float {
+    public var abs: Float {
         ISO_9899.Math.fabs(self.value)
     }
 
@@ -369,35 +369,43 @@ extension Float.C {
         ISO_9899.Math.nearbyint(self.value)
     }
 
-    /// Round to nearest integer and return as Int
+    /// Round to nearest integer using current rounding mode
+    ///
+    /// Returns the rounded value as an `Int`, using the current FPU rounding direction.
     ///
     /// Delegates to ``ISO_9899/Math/lrint(_:)-1l1g3``
     @_transparent
-    public var lrint: Int {
+    public func roundedToInt() -> Int {
         ISO_9899.Math.lrint(self.value)
     }
 
-    /// Round to nearest integer and return as Int64
+    /// Round to nearest integer using current rounding mode
+    ///
+    /// Returns the rounded value as an `Int64`, using the current FPU rounding direction.
     ///
     /// Delegates to ``ISO_9899/Math/llrint(_:)-61a0k``
     @_transparent
-    public var llrint: Int64 {
+    public func roundedToInt64() -> Int64 {
         ISO_9899.Math.llrint(self.value)
     }
 
-    /// Round (ties away from zero) and return as Int
+    /// Round to nearest integer (ties away from zero)
+    ///
+    /// Returns the rounded value as an `Int`, with ties rounded away from zero.
     ///
     /// Delegates to ``ISO_9899/Math/lround(_:)-4gv6i``
     @_transparent
-    public var lround: Int {
+    public func roundToInt() -> Int {
         ISO_9899.Math.lround(self.value)
     }
 
-    /// Round (ties away from zero) and return as Int64
+    /// Round to nearest integer (ties away from zero)
+    ///
+    /// Returns the rounded value as an `Int64`, with ties rounded away from zero.
     ///
     /// Delegates to ``ISO_9899/Math/llround(_:)-4j6vs``
     @_transparent
-    public var llround: Int64 {
+    public func roundToInt64() -> Int64 {
         ISO_9899.Math.llround(self.value)
     }
 }
@@ -409,7 +417,7 @@ extension Float.C {
     ///
     /// Delegates to ``ISO_9899/Math/fmod(_:_:)-8mqze``
     @_transparent
-    public func fmod(_ y: Float) -> Float {
+    public func mod(_ y: Float) -> Float {
         ISO_9899.Math.fmod(self.value, y)
     }
 
@@ -433,28 +441,30 @@ extension Float.C {
 // MARK: - Manipulation Functions (Section 7.12.11)
 
 extension Float.C {
-    /// Copy sign from another value
+    /// Returns self with the sign of another value
+    ///
+    /// Returns a value with the magnitude of self and the sign of `other`.
     ///
     /// Delegates to ``ISO_9899/Math/copysign(_:_:)-4hj4j``
     @_transparent
-    public func copysign(_ y: Float) -> Float {
-        ISO_9899.Math.copysign(self.value, y)
+    public func withSign(of other: Float) -> Float {
+        ISO_9899.Math.copysign(self.value, other)
     }
 
-    /// Get next representable value toward y
+    /// Returns the next representable value in the direction of another value
     ///
     /// Delegates to ``ISO_9899/Math/nextafter(_:_:)-71rr4``
     @_transparent
-    public func nextafter(_ y: Float) -> Float {
-        ISO_9899.Math.nextafter(self.value, y)
+    public func nextRepresentable(toward other: Float) -> Float {
+        ISO_9899.Math.nextafter(self.value, other)
     }
 
-    /// Get next representable value toward y (long double)
+    /// Returns the next representable value in the direction of another value (extended precision)
     ///
     /// Delegates to ``ISO_9899/Math/nexttoward(_:_:)-2rksv``
     @_transparent
-    public func nexttoward(_ y: Double) -> Float {
-        ISO_9899.Math.nexttoward(self.value, y)
+    public func nextRepresentableExtended(toward other: Double) -> Float {
+        ISO_9899.Math.nexttoward(self.value, other)
     }
 }
 
@@ -463,49 +473,61 @@ extension Float.C {
 extension Float.C {
     /// Classify floating-point value
     ///
+    /// Returns the classification of the value (normal, zero, subnormal, infinite, or NaN).
+    ///
     /// Delegates to ``ISO_9899/Math/fpclassify(_:)-4hj4j``
     @_transparent
-    public var fpclassify: ISO_9899.Math.FloatingPointClass {
+    public var classification: ISO_9899.Math.FloatingPointClass {
         ISO_9899.Math.fpclassify(self.value)
     }
 
     /// Test for finite value
     ///
+    /// Returns `true` if the value is finite (not infinite or NaN).
+    ///
     /// Delegates to ``ISO_9899/Math/isfinite(_:)-4hj4j``
     @_transparent
-    public var isfinite: Bool {
+    public var isFinite: Bool {
         ISO_9899.Math.isfinite(self.value)
     }
 
     /// Test for infinity
     ///
+    /// Returns `true` if the value is positive or negative infinity.
+    ///
     /// Delegates to ``ISO_9899/Math/isinf(_:)-4hj4j``
     @_transparent
-    public var isinf: Bool {
+    public var isInfinite: Bool {
         ISO_9899.Math.isinf(self.value)
     }
 
     /// Test for NaN
     ///
+    /// Returns `true` if the value is Not-a-Number (NaN).
+    ///
     /// Delegates to ``ISO_9899/Math/isnan(_:)-4hj4j``
     @_transparent
-    public var isnan: Bool {
+    public var isNaN: Bool {
         ISO_9899.Math.isnan(self.value)
     }
 
     /// Test for normal value
     ///
+    /// Returns `true` if the value is normal (not zero, subnormal, infinite, or NaN).
+    ///
     /// Delegates to ``ISO_9899/Math/isnormal(_:)-4hj4j``
     @_transparent
-    public var isnormal: Bool {
+    public var isNormal: Bool {
         ISO_9899.Math.isnormal(self.value)
     }
 
-    /// Test sign bit
+    /// Test if sign bit is set
+    ///
+    /// Returns `true` if the sign bit is set (negative), including for -0.0 and -NaN.
     ///
     /// Delegates to ``ISO_9899/Math/signbit(_:)-4hj4j``
     @_transparent
-    public var signbit: Bool {
+    public var hasNegativeSign: Bool {
         ISO_9899.Math.signbit(self.value)
     }
 }
@@ -513,52 +535,65 @@ extension Float.C {
 // MARK: - Comparison Macros (Section 7.12.14)
 
 extension Float.C {
-    /// Determine whether value > y (quiet comparison)
+    /// Determine whether self > other (quiet comparison)
+    ///
+    /// Unlike the `>` operator, this does not raise an exception when comparing with NaN.
     ///
     /// Delegates to ``ISO_9899/Math/isgreater(_:_:)-4hj4j``
     @_transparent
-    public func isgreater(_ y: Float) -> Bool {
-        ISO_9899.Math.isgreater(self.value, y)
+    public func isGreater(than other: Float) -> Bool {
+        ISO_9899.Math.isgreater(self.value, other)
     }
 
-    /// Determine whether value >= y (quiet comparison)
+    /// Determine whether self >= other (quiet comparison)
+    ///
+    /// Unlike the `>=` operator, this does not raise an exception when comparing with NaN.
     ///
     /// Delegates to ``ISO_9899/Math/isgreaterequal(_:_:)-4hj4j``
     @_transparent
-    public func isgreaterequal(_ y: Float) -> Bool {
-        ISO_9899.Math.isgreaterequal(self.value, y)
+    public func isGreaterOrEqual(to other: Float) -> Bool {
+        ISO_9899.Math.isgreaterequal(self.value, other)
     }
 
-    /// Determine whether value < y (quiet comparison)
+    /// Determine whether self < other (quiet comparison)
+    ///
+    /// Unlike the `<` operator, this does not raise an exception when comparing with NaN.
     ///
     /// Delegates to ``ISO_9899/Math/isless(_:_:)-4hj4j``
     @_transparent
-    public func isless(_ y: Float) -> Bool {
-        ISO_9899.Math.isless(self.value, y)
+    public func isLess(than other: Float) -> Bool {
+        ISO_9899.Math.isless(self.value, other)
     }
 
-    /// Determine whether value <= y (quiet comparison)
+    /// Determine whether self <= other (quiet comparison)
+    ///
+    /// Unlike the `<=` operator, this does not raise an exception when comparing with NaN.
     ///
     /// Delegates to ``ISO_9899/Math/islessequal(_:_:)-4hj4j``
     @_transparent
-    public func islessequal(_ y: Float) -> Bool {
-        ISO_9899.Math.islessequal(self.value, y)
+    public func isLessOrEqual(to other: Float) -> Bool {
+        ISO_9899.Math.islessequal(self.value, other)
     }
 
-    /// Determine whether value < y or value > y (quiet comparison)
+    /// Determine whether self != other (quiet comparison)
+    ///
+    /// Returns `true` if self < other or self > other (excludes equal and unordered).
+    /// Unlike `!=`, this does not raise an exception when comparing with NaN.
     ///
     /// Delegates to ``ISO_9899/Math/islessgreater(_:_:)-4hj4j``
     @_transparent
-    public func islessgreater(_ y: Float) -> Bool {
-        ISO_9899.Math.islessgreater(self.value, y)
+    public func isNotEqual(to other: Float) -> Bool {
+        ISO_9899.Math.islessgreater(self.value, other)
     }
 
     /// Determine whether arguments are unordered
     ///
+    /// Returns `true` if either self or other is NaN.
+    ///
     /// Delegates to ``ISO_9899/Math/isunordered(_:_:)-4hj4j``
     @_transparent
-    public func isunordered(_ y: Float) -> Bool {
-        ISO_9899.Math.isunordered(self.value, y)
+    public func isUnordered(with other: Float) -> Bool {
+        ISO_9899.Math.isunordered(self.value, other)
     }
 }
 
@@ -567,9 +602,11 @@ extension Float.C {
 extension Float.C {
     /// Compute positive difference
     ///
+    /// Returns `self - y` if `self > y`, otherwise `+0`.
+    ///
     /// Delegates to ``ISO_9899/Math/fdim(_:_:)-8ks7i``
     @_transparent
-    public func fdim(_ y: Float) -> Float {
+    public func positiveDifference(from y: Float) -> Float {
         ISO_9899.Math.fdim(self.value, y)
     }
 
@@ -577,7 +614,7 @@ extension Float.C {
     ///
     /// Delegates to ``ISO_9899/Math/fmax(_:_:)-9yw9t``
     @_transparent
-    public func fmax(_ y: Float) -> Float {
+    public func max(_ y: Float) -> Float {
         ISO_9899.Math.fmax(self.value, y)
     }
 
@@ -585,7 +622,7 @@ extension Float.C {
     ///
     /// Delegates to ``ISO_9899/Math/fmin(_:_:)-68xbb``
     @_transparent
-    public func fmin(_ y: Float) -> Float {
+    public func min(_ y: Float) -> Float {
         ISO_9899.Math.fmin(self.value, y)
     }
 
