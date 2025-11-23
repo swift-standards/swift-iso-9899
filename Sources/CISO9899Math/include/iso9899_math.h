@@ -47,10 +47,23 @@ static inline float iso9899_atan2f(float y, float x) { return atan2f(y, x); }
 // Exponential and logarithmic functions (ISO/IEC 9899 Section 7.12.6)
 static inline double iso9899_exp(double x) { return exp(x); }
 static inline float iso9899_expf(float x) { return expf(x); }
+static inline double iso9899_exp2(double x) { return exp2(x); }
+static inline float iso9899_exp2f(float x) { return exp2f(x); }
 static inline double iso9899_log(double x) { return log(x); }
 static inline float iso9899_logf(float x) { return logf(x); }
+static inline double iso9899_log2(double x) { return log2(x); }
+static inline float iso9899_log2f(float x) { return log2f(x); }
 static inline double iso9899_log10(double x) { return log10(x); }
 static inline float iso9899_log10f(float x) { return log10f(x); }
+
+// Power and absolute-value functions (ISO/IEC 9899 Section 7.12.7)
+// Additional functions beyond pow() and sqrt()
+static inline double iso9899_fabs(double x) { return fabs(x); }
+static inline float iso9899_fabsf(float x) { return fabsf(x); }
+static inline double iso9899_hypot(double x, double y) { return hypot(x, y); }
+static inline float iso9899_hypotf(float x, float y) { return hypotf(x, y); }
+static inline double iso9899_cbrt(double x) { return cbrt(x); }
+static inline float iso9899_cbrtf(float x) { return cbrtf(x); }
 
 // Rounding functions (ISO/IEC 9899 Section 7.12.9)
 // These implement IEEE 754 roundToIntegral operations per Annex F
