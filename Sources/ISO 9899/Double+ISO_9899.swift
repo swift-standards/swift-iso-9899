@@ -20,6 +20,9 @@ extension Double {
     /// let sine = x.c.sin                // 0.90929742...
     /// let log = x.c.log                 // 0.693147180...
     /// let abs = (-x).c.abs              // 2.0
+    ///
+    /// // Static methods
+    /// let nan = Double.c.nan("overflow")  // NaN with payload
     /// ```
     ///
     /// ## See Also
@@ -27,6 +30,20 @@ extension Double {
     /// - ``ISO_9899/Math``
     public var c: C {
         C(value: self)
+    }
+
+    /// Static access to C standard library math type-level functions via `.c` namespace
+    ///
+    /// Provides ergonomic access to type-level C math functions like `nan()`.
+    ///
+    /// ## Usage
+    ///
+    /// ```swift
+    /// let nan = Double.c.nan()              // Plain NaN
+    /// let tagged = Double.c.nan("overflow") // NaN with diagnostic payload
+    /// ```
+    public static var c: C.Type {
+        C.self
     }
 
     /// C standard library math operations namespace for Double
@@ -441,6 +458,31 @@ extension Double.C {
 // MARK: - Manipulation Functions (Section 7.12.11)
 
 extension Double.C {
+    /// Create a quiet NaN with optional diagnostic payload
+    ///
+    /// Creates a quiet NaN value with an optional string tag that encodes a payload
+    /// in the NaN's trailing fraction field. This can be useful for debugging or
+    /// tracking the origin of NaN values.
+    ///
+    /// The payload interpretation is implementation-defined. Most implementations
+    /// either ignore the tag or interpret it as an integer.
+    ///
+    /// Delegates to ``ISO_9899/Math/nan(_:)``
+    ///
+    /// - Parameter tag: Optional string tag for NaN payload (defaults to empty string)
+    /// - Returns: A quiet NaN value
+    ///
+    /// ## Example
+    /// ```swift
+    /// let nan1 = Double.c.nan()                    // Plain NaN
+    /// let nan2 = Double.c.nan("overflow")          // NaN with diagnostic tag
+    /// let nan3 = Double.c.nan("division-by-zero")  // Different payload
+    /// ```
+    @_transparent
+    public static func nan(_ tag: String = "") -> Double {
+        tag.withCString { ISO_9899.Math.nan($0) }
+    }
+
     /// Returns self with the sign of another value
     ///
     /// Returns a value with the magnitude of self and the sign of `other`.
