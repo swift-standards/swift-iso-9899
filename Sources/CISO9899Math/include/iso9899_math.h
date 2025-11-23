@@ -20,6 +20,21 @@
     #include <math.h>
 #endif
 
+// Classification functions (ISO/IEC 9899 Section 7.12.3)
+// Note: These wrap C macros as functions for Swift interoperability
+static inline int iso9899_fpclassify_d(double x) { return fpclassify(x); }
+static inline int iso9899_fpclassify_f(float x) { return fpclassify(x); }
+static inline int iso9899_isfinite_d(double x) { return isfinite(x); }
+static inline int iso9899_isfinite_f(float x) { return isfinite(x); }
+static inline int iso9899_isinf_d(double x) { return isinf(x); }
+static inline int iso9899_isinf_f(float x) { return isinf(x); }
+static inline int iso9899_isnan_d(double x) { return isnan(x); }
+static inline int iso9899_isnan_f(float x) { return isnan(x); }
+static inline int iso9899_isnormal_d(double x) { return isnormal(x); }
+static inline int iso9899_isnormal_f(float x) { return isnormal(x); }
+static inline int iso9899_signbit_d(double x) { return signbit(x); }
+static inline int iso9899_signbit_f(float x) { return signbit(x); }
+
 // Power functions (ISO/IEC 9899 Section 7.12.7)
 static inline double iso9899_pow(double x, double y) { return pow(x, y); }
 static inline float iso9899_powf(float x, float y) { return powf(x, y); }

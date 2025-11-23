@@ -458,6 +458,58 @@ extension Float.C {
     }
 }
 
+// MARK: - Classification Functions (Section 7.12.3)
+
+extension Float.C {
+    /// Classify floating-point value
+    ///
+    /// Delegates to ``ISO_9899/Math/fpclassify(_:)-4hj4j``
+    @_transparent
+    public var fpclassify: ISO_9899.Math.FloatingPointClass {
+        ISO_9899.Math.fpclassify(self.value)
+    }
+
+    /// Test for finite value
+    ///
+    /// Delegates to ``ISO_9899/Math/isfinite(_:)-4hj4j``
+    @_transparent
+    public var isfinite: Bool {
+        ISO_9899.Math.isfinite(self.value)
+    }
+
+    /// Test for infinity
+    ///
+    /// Delegates to ``ISO_9899/Math/isinf(_:)-4hj4j``
+    @_transparent
+    public var isinf: Bool {
+        ISO_9899.Math.isinf(self.value)
+    }
+
+    /// Test for NaN
+    ///
+    /// Delegates to ``ISO_9899/Math/isnan(_:)-4hj4j``
+    @_transparent
+    public var isnan: Bool {
+        ISO_9899.Math.isnan(self.value)
+    }
+
+    /// Test for normal value
+    ///
+    /// Delegates to ``ISO_9899/Math/isnormal(_:)-4hj4j``
+    @_transparent
+    public var isnormal: Bool {
+        ISO_9899.Math.isnormal(self.value)
+    }
+
+    /// Test sign bit
+    ///
+    /// Delegates to ``ISO_9899/Math/signbit(_:)-4hj4j``
+    @_transparent
+    public var signbit: Bool {
+        ISO_9899.Math.signbit(self.value)
+    }
+}
+
 // MARK: - Maximum, Minimum, and FMA (Sections 7.12.12, 7.12.13)
 
 extension Float.C {
