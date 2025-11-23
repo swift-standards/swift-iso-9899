@@ -166,4 +166,71 @@ extension ISO_9899.Math {
     public static func log10(_ x: Float) -> Float {
         return iso9899_log10f(x)
     }
+
+    /// Compute exp(x) - 1
+    ///
+    /// ISO/IEC 9899:2018 Section 7.12.6.2
+    ///
+    /// The expm1 functions compute the base-e exponential of the argument, minus 1.
+    /// A range error occurs if x is too large.
+    ///
+    /// This function is more accurate than computing exp(x) - 1 when x is near zero.
+    ///
+    /// - Parameter x: The value
+    /// - Returns: The value of e^x - 1
+    ///
+    /// ## Example
+    /// ```swift
+    /// let result = ISO_9899.Math.expm1(0.0)      // 0.0
+    /// let result2 = ISO_9899.Math.expm1(0.0001)  // 0.00010000500... (accurate for small x)
+    /// ```
+    @inline(__always)
+    public static func expm1(_ x: Double) -> Double {
+        return iso9899_expm1(x)
+    }
+
+    /// Compute exp(x) - 1 (Float variant)
+    ///
+    /// ISO/IEC 9899:2018 Section 7.12.6.2
+    ///
+    /// - Parameter x: The value
+    /// - Returns: The value of e^x - 1
+    @inline(__always)
+    public static func expm1(_ x: Float) -> Float {
+        return iso9899_expm1f(x)
+    }
+
+    /// Compute log(1 + x)
+    ///
+    /// ISO/IEC 9899:2018 Section 7.12.6.6
+    ///
+    /// The log1p functions compute the base-e (natural) logarithm of 1 plus the argument.
+    /// A domain error occurs if the argument is less than −1. A pole error may occur if
+    /// the argument equals −1. A range error may occur.
+    ///
+    /// This function is more accurate than computing log(1 + x) when x is near zero.
+    ///
+    /// - Parameter x: The value (must be > -1)
+    /// - Returns: The natural logarithm of (1 + x)
+    ///
+    /// ## Example
+    /// ```swift
+    /// let result = ISO_9899.Math.log1p(0.0)      // 0.0
+    /// let result2 = ISO_9899.Math.log1p(0.0001)  // 0.00009999500... (accurate for small x)
+    /// ```
+    @inline(__always)
+    public static func log1p(_ x: Double) -> Double {
+        return iso9899_log1p(x)
+    }
+
+    /// Compute log(1 + x) (Float variant)
+    ///
+    /// ISO/IEC 9899:2018 Section 7.12.6.6
+    ///
+    /// - Parameter x: The value (must be > -1)
+    /// - Returns: The natural logarithm of (1 + x)
+    @inline(__always)
+    public static func log1p(_ x: Float) -> Float {
+        return iso9899_log1pf(x)
+    }
 }
