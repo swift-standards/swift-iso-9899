@@ -165,4 +165,19 @@ static inline float iso9899_fminf(float x, float y) { return fminf(x, y); }
 static inline double iso9899_fma(double x, double y, double z) { return fma(x, y, z); }
 static inline float iso9899_fmaf(float x, float y, float z) { return fmaf(x, y, z); }
 
+// Comparison macros (ISO/IEC 9899 Section 7.12.14)
+// Note: These wrap C macros as functions for Swift interoperability
+static inline int iso9899_isgreater_d(double x, double y) { return isgreater(x, y); }
+static inline int iso9899_isgreater_f(float x, float y) { return isgreater(x, y); }
+static inline int iso9899_isgreaterequal_d(double x, double y) { return isgreaterequal(x, y); }
+static inline int iso9899_isgreaterequal_f(float x, float y) { return isgreaterequal(x, y); }
+static inline int iso9899_isless_d(double x, double y) { return isless(x, y); }
+static inline int iso9899_isless_f(float x, float y) { return isless(x, y); }
+static inline int iso9899_islessequal_d(double x, double y) { return islessequal(x, y); }
+static inline int iso9899_islessequal_f(float x, float y) { return islessequal(x, y); }
+static inline int iso9899_islessgreater_d(double x, double y) { return islessgreater(x, y); }
+static inline int iso9899_islessgreater_f(float x, float y) { return islessgreater(x, y); }
+static inline int iso9899_isunordered_d(double x, double y) { return isunordered(x, y); }
+static inline int iso9899_isunordered_f(float x, float y) { return isunordered(x, y); }
+
 #endif /* ISO9899_MATH_H */

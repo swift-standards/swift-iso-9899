@@ -510,6 +510,58 @@ extension Double.C {
     }
 }
 
+// MARK: - Comparison Macros (Section 7.12.14)
+
+extension Double.C {
+    /// Determine whether value > y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/isgreater(_:_:)-76te9``
+    @_transparent
+    public func isgreater(_ y: Double) -> Bool {
+        ISO_9899.Math.isgreater(self.value, y)
+    }
+
+    /// Determine whether value >= y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/isgreaterequal(_:_:)-76te9``
+    @_transparent
+    public func isgreaterequal(_ y: Double) -> Bool {
+        ISO_9899.Math.isgreaterequal(self.value, y)
+    }
+
+    /// Determine whether value < y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/isless(_:_:)-76te9``
+    @_transparent
+    public func isless(_ y: Double) -> Bool {
+        ISO_9899.Math.isless(self.value, y)
+    }
+
+    /// Determine whether value <= y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/islessequal(_:_:)-76te9``
+    @_transparent
+    public func islessequal(_ y: Double) -> Bool {
+        ISO_9899.Math.islessequal(self.value, y)
+    }
+
+    /// Determine whether value < y or value > y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/islessgreater(_:_:)-76te9``
+    @_transparent
+    public func islessgreater(_ y: Double) -> Bool {
+        ISO_9899.Math.islessgreater(self.value, y)
+    }
+
+    /// Determine whether arguments are unordered
+    ///
+    /// Delegates to ``ISO_9899/Math/isunordered(_:_:)-76te9``
+    @_transparent
+    public func isunordered(_ y: Double) -> Bool {
+        ISO_9899.Math.isunordered(self.value, y)
+    }
+}
+
 // MARK: - Maximum, Minimum, and FMA (Sections 7.12.12, 7.12.13)
 
 extension Double.C {

@@ -510,6 +510,58 @@ extension Float.C {
     }
 }
 
+// MARK: - Comparison Macros (Section 7.12.14)
+
+extension Float.C {
+    /// Determine whether value > y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/isgreater(_:_:)-4hj4j``
+    @_transparent
+    public func isgreater(_ y: Float) -> Bool {
+        ISO_9899.Math.isgreater(self.value, y)
+    }
+
+    /// Determine whether value >= y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/isgreaterequal(_:_:)-4hj4j``
+    @_transparent
+    public func isgreaterequal(_ y: Float) -> Bool {
+        ISO_9899.Math.isgreaterequal(self.value, y)
+    }
+
+    /// Determine whether value < y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/isless(_:_:)-4hj4j``
+    @_transparent
+    public func isless(_ y: Float) -> Bool {
+        ISO_9899.Math.isless(self.value, y)
+    }
+
+    /// Determine whether value <= y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/islessequal(_:_:)-4hj4j``
+    @_transparent
+    public func islessequal(_ y: Float) -> Bool {
+        ISO_9899.Math.islessequal(self.value, y)
+    }
+
+    /// Determine whether value < y or value > y (quiet comparison)
+    ///
+    /// Delegates to ``ISO_9899/Math/islessgreater(_:_:)-4hj4j``
+    @_transparent
+    public func islessgreater(_ y: Float) -> Bool {
+        ISO_9899.Math.islessgreater(self.value, y)
+    }
+
+    /// Determine whether arguments are unordered
+    ///
+    /// Delegates to ``ISO_9899/Math/isunordered(_:_:)-4hj4j``
+    @_transparent
+    public func isunordered(_ y: Float) -> Bool {
+        ISO_9899.Math.isunordered(self.value, y)
+    }
+}
+
 // MARK: - Maximum, Minimum, and FMA (Sections 7.12.12, 7.12.13)
 
 extension Float.C {
