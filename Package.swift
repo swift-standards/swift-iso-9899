@@ -8,7 +8,7 @@ let package = Package(
         .iOS(.v16),
         .tvOS(.v16),
         .watchOS(.v9),
-        .macCatalyst(.v16)
+        .macCatalyst(.v16),
     ],
     products: [
         .library(
@@ -38,9 +38,9 @@ let package = Package(
             name: "ISO 9899 Tests",
             dependencies: [
                 "ISO 9899",
-                .product(name: "StandardsTestSupport", package: "swift-standards")
+                .product(name: "StandardsTestSupport", package: "swift-standards"),
             ]
-        )
+        ),
     ],
     swiftLanguageModes: [.v6]
 )

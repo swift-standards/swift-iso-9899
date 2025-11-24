@@ -228,7 +228,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `Trigonometric Identities` {
 
-        @Test(arguments: [0.0, Double.pi/6, Double.pi/4, Double.pi/3, Double.pi/2])
+        @Test(arguments: [0.0, Double.pi / 6, Double.pi / 4, Double.pi / 3, Double.pi / 2])
         func `sin²(x) + cos²(x) = 1`(angle: Double) {
             let sinValue = ISO_9899.Math.sin(angle)
             let cosValue = ISO_9899.Math.cos(angle)
@@ -236,7 +236,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             #expect(abs(sum - 1.0) < 0.0001, "Pythagorean identity failed for angle \(angle)")
         }
 
-        @Test(arguments: [Double.pi/6, Double.pi/4, Double.pi/3])
+        @Test(arguments: [Double.pi / 6, Double.pi / 4, Double.pi / 3])
         func `tan(x) = sin(x) / cos(x)`(angle: Double) {
             let tanValue = ISO_9899.Math.tan(angle)
             let sinValue = ISO_9899.Math.sin(angle)
@@ -255,7 +255,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
         func `LCH to LAB conversion uses cos and sin`() {
             // Simulating lchToRGB color space conversion
             let h = 120.0  // Hue in degrees
-            let c = 50.0   // Chroma
+            let c = 50.0  // Chroma
 
             // Convert to radians and compute
             let radians = h * Double.pi / 180.0
@@ -270,8 +270,8 @@ struct `ISO_9899.Math - Trigonometric Functions` {
         @Test
         func `OKLCH to OKLAB conversion uses cos and sin`() {
             // Simulating oklchToRGB color space conversion
-            let h = 45.0   // Hue in degrees
-            let c = 0.15   // Chroma
+            let h = 45.0  // Hue in degrees
+            let c = 0.15  // Chroma
 
             let radians = h * Double.pi / 180.0
             let a = c * ISO_9899.Math.cos(radians)
@@ -284,7 +284,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
         @Test
         func `gamma correction uses fractional pow`() {
             let c = 0.5
-            let gamma = ISO_9899.Math.pow(c, 1.0/2.4)
+            let gamma = ISO_9899.Math.pow(c, 1.0 / 2.4)
 
             // Result should be between 0 and 1
             #expect(gamma > 0.0)

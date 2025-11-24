@@ -255,9 +255,11 @@ struct `ISO_9899.Math - Edge Cases` {
 
         @Test
         func `sin range is always [-1, 1]`() {
-            let values: [Double] = [0.0, Double.pi/6, Double.pi/4, Double.pi/3, Double.pi/2,
-                                     2*Double.pi/3, 3*Double.pi/4, 5*Double.pi/6, Double.pi,
-                                     -Double.pi/2, -Double.pi]
+            let values: [Double] = [
+                0.0, Double.pi / 6, Double.pi / 4, Double.pi / 3, Double.pi / 2,
+                2 * Double.pi / 3, 3 * Double.pi / 4, 5 * Double.pi / 6, Double.pi,
+                -Double.pi / 2, -Double.pi,
+            ]
             for value in values {
                 let result = ISO_9899.Math.sin(value)
                 #expect(abs(result) <= 1.0, "sin(\(value)) = \(result) exceeds range")
@@ -297,9 +299,11 @@ struct `ISO_9899.Math - Edge Cases` {
 
         @Test
         func `cos range is always [-1, 1]`() {
-            let values: [Double] = [0.0, Double.pi/6, Double.pi/4, Double.pi/3, Double.pi/2,
-                                     2*Double.pi/3, 3*Double.pi/4, 5*Double.pi/6, Double.pi,
-                                     -Double.pi/2, -Double.pi]
+            let values: [Double] = [
+                0.0, Double.pi / 6, Double.pi / 4, Double.pi / 3, Double.pi / 2,
+                2 * Double.pi / 3, 3 * Double.pi / 4, 5 * Double.pi / 6, Double.pi,
+                -Double.pi / 2, -Double.pi,
+            ]
             for value in values {
                 let result = ISO_9899.Math.cos(value)
                 #expect(abs(result) <= 1.0, "cos(\(value)) = \(result) exceeds range")
@@ -659,7 +663,7 @@ struct `ISO_9899.Math - Edge Cases` {
         @Test
         func `pow with denormalized result`() {
             let base = 2.0
-            let exponent = -1074.0 // Near smallest normal number
+            let exponent = -1074.0  // Near smallest normal number
             let result = ISO_9899.Math.pow(base, exponent)
             #expect(result >= 0.0)
         }

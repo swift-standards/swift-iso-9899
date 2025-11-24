@@ -61,13 +61,6 @@ extension Float {
     public struct C {
         /// The wrapped value
         public let value: Float
-
-        /// Creates a C math namespace wrapper
-        ///
-        /// - Parameter value: The value to wrap
-        init(value: Float) {
-            self.value = value
-        }
     }
 }
 

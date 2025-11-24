@@ -30,8 +30,8 @@ struct `ISO_9899.Math - Power Functions` {
 
         @Test(arguments: [
             (16.0, 0.5, 4.0),
-            (27.0, 1.0/3.0, 3.0),
-            (8.0, 1.0/3.0, 2.0),
+            (27.0, 1.0 / 3.0, 3.0),
+            (8.0, 1.0 / 3.0, 2.0),
             (4.0, 0.5, 2.0),
             (100.0, 0.5, 10.0),
         ])
@@ -44,7 +44,7 @@ struct `ISO_9899.Math - Power Functions` {
         func `pow with gamma correction exponent`() {
             // Gamma correction: pow(c, 1/2.4)
             let c = 0.5
-            let gamma = ISO_9899.Math.pow(c, 1.0/2.4)
+            let gamma = ISO_9899.Math.pow(c, 1.0 / 2.4)
             #expect(gamma > 0)
             #expect(gamma < 1)
         }
@@ -97,7 +97,7 @@ struct `ISO_9899.Math - Power Functions` {
             (9.0, 3.0),
             (16.0, 4.0),
             (25.0, 5.0),
-            (100.0, 10.0)
+            (100.0, 10.0),
         ])
         func `sqrt of perfect squares`(input: Double, expected: Double) {
             #expect(ISO_9899.Math.sqrt(input) == expected)

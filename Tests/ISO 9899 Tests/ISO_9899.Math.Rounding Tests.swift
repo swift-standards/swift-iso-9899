@@ -167,18 +167,18 @@ struct `ISO_9899.Math - Rounding Functions` {
 
         @Test(arguments: [
             (2.3, 2.0),
-            (2.5, 3.0),   // ties away from zero
+            (2.5, 3.0),  // ties away from zero
             (2.7, 3.0),
             (2.0, 2.0),
             (-2.3, -2.0),
-            (-2.5, -3.0), // ties away from zero
+            (-2.5, -3.0),  // ties away from zero
             (-2.7, -3.0),
             (-2.0, -2.0),
             (0.4, 0.0),
-            (0.5, 1.0),   // ties away from zero
+            (0.5, 1.0),  // ties away from zero
             (0.6, 1.0),
             (-0.4, 0.0),
-            (-0.5, -1.0), // ties away from zero
+            (-0.5, -1.0),  // ties away from zero
             (-0.6, -1.0),
         ])
         func `round to nearest, ties away from zero`(input: Double, expected: Double) {
@@ -224,7 +224,7 @@ struct `ISO_9899.Math - Rounding Functions` {
             (Float(2.3), Float(2.0)),
             (Float(2.5), Float(3.0)),  // ties away from zero
             (Float(-2.3), Float(-2.0)),
-            (Float(-2.5), Float(-3.0)), // ties away from zero
+            (Float(-2.5), Float(-3.0)),  // ties away from zero
         ])
         func `roundf to nearest, ties away from zero`(input: Float, expected: Float) {
             #expect(ISO_9899.Math.round(input) == expected)

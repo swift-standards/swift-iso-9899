@@ -64,7 +64,7 @@ extension `Performance Tests` {
         @Test(.timed(threshold: .milliseconds(50)))
         func `pow() with fractional exponents - 100K iterations`() {
             for _ in 0..<100_000 {
-                _ = ISO_9899.Math.pow(2.0, 1.0/2.4)
+                _ = ISO_9899.Math.pow(2.0, 1.0 / 2.4)
             }
         }
 
@@ -123,7 +123,7 @@ extension `Performance Tests` {
             // Simulate gamma correction (used in HTMLColor)
             for i in 0..<10_000 {
                 let c = Double(i % 256) / 255.0
-                _ = ISO_9899.Math.pow(c, 1.0/2.4)
+                _ = ISO_9899.Math.pow(c, 1.0 / 2.4)
             }
         }
     }

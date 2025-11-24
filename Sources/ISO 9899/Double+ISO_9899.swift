@@ -61,13 +61,6 @@ extension Double {
     public struct C {
         /// The wrapped value
         public let value: Double
-
-        /// Creates a C math namespace wrapper
-        ///
-        /// - Parameter value: The value to wrap
-        init(value: Double) {
-            self.value = value
-        }
     }
 }
 

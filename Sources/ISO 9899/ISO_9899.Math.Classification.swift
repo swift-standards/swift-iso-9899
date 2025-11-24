@@ -20,13 +20,13 @@ extension ISO_9899.Math {
         /// Indicates a finite number that is neither zero, subnormal, nor infinite
         case normal = 0  // FP_NORMAL
         /// Indicates positive or negative zero
-        case zero = 1    // FP_ZERO
+        case zero = 1  // FP_ZERO
         /// Indicates a subnormal (denormalized) number
         case subnormal = 2  // FP_SUBNORMAL
         /// Indicates positive or negative infinity
-        case infinite = 3   // FP_INFINITE
+        case infinite = 3  // FP_INFINITE
         /// Indicates Not-a-Number (NaN)
-        case nan = 4        // FP_NAN
+        case nan = 4  // FP_NAN
     }
 
     /// Classify floating-point value
