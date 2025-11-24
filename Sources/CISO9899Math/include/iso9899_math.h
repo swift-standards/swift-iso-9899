@@ -150,8 +150,19 @@ static inline double iso9899_nan(const char *tagp) { return nan(tagp); }
 static inline float iso9899_nanf(const char *tagp) { return nanf(tagp); }
 static inline double iso9899_nextafter(double x, double y) { return nextafter(x, y); }
 static inline float iso9899_nextafterf(float x, float y) { return nextafterf(x, y); }
-static inline double iso9899_nexttoward(double x, long double y) { return nexttoward(x, y); }
-static inline float iso9899_nexttowardf(float x, long double y) { return nexttowardf(x, y); }
+
+// Note: ISO C specifies nexttoward takes long double as second parameter.
+// We expose double-based wrappers to Swift for cross-platform consistency,
+// but internally call the native nexttoward with appropriate type conversion.
+#if defined(__APPLE__) && defined(__x86_64__)
+    // macOS x86_64: long double is Float80, convert from double
+    static inline double iso9899_nexttoward(double x, double y) { return nexttoward(x, (long double)y); }
+    static inline float iso9899_nexttowardf(float x, double y) { return nexttowardf(x, (long double)y); }
+#else
+    // Other platforms: long double is same as double
+    static inline double iso9899_nexttoward(double x, double y) { return nexttoward(x, y); }
+    static inline float iso9899_nexttowardf(float x, double y) { return nexttowardf(x, y); }
+#endif
 
 // Maximum, minimum, and positive difference functions (ISO/IEC 9899 Section 7.12.12)
 static inline double iso9899_fdim(double x, double y) { return fdim(x, y); }
