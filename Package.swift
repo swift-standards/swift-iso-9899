@@ -17,7 +17,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-standards/swift-standards", from: "0.10.0")
+        .package(path: "../../swift-primitives/swift-test-primitives")
     ],
     targets: [
         // C module wrapping platform math library
@@ -38,7 +38,7 @@ let package = Package(
             name: "ISO 9899 Tests",
             dependencies: [
                 "ISO 9899",
-                .product(name: "StandardsTestSupport", package: "swift-standards"),
+                .product(name: "Test Primitives", package: "swift-test-primitives"),
             ]
         ),
     ],
