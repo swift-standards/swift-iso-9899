@@ -3,7 +3,7 @@
 //
 // Owned ISO C byte string
 
-import CISO9899String
+public import CISO9899String
 
 extension ISO_9899 {
     /// Owned, null-terminated ISO C byte string.

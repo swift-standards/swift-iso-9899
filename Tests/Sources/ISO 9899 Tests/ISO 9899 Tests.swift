@@ -3,7 +3,7 @@
 //
 // Tests for module-level ISO_9899 namespace and performance benchmarks
 
-import StandardsTestSupport
+import Test_Primitives
 import Testing
 
 @testable import ISO_9899
