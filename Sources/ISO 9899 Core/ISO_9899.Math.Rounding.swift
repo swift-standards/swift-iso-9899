@@ -7,7 +7,7 @@
 // per ISO/IEC 9899 Annex F (IEC 60559 floating-point arithmetic compliance).
 // Platform <math.h> is assumed to provide IEEE 754-compliant implementations.
 
-public import CISO9899Math
+public import ISO_9899_Math_Shims
 
 extension ISO_9899.Math {
 

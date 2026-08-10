@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.22.3 - Memory management functions
 
-public import CISO9899Stdlib
+public import ISO_9899_Stdlib_Shims
 
 extension ISO_9899.Stdlib {
     /// Memory allocation functions.

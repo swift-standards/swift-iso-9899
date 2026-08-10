@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.24.6.3 - String length
 
-public import CISO9899String
+public import ISO_9899_String_Shims
 
 extension ISO_9899.String {
     /// String length functions

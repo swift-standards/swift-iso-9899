@@ -30,17 +30,17 @@ let package = Package(
         // MARK: - C Shim Modules (Core)
 
         .target(
-            name: "CISO9899Math",
+            name: "ISO 9899 Math Shims",
             dependencies: [],
             publicHeadersPath: "include"
         ),
         .target(
-            name: "CISO9899Errno",
+            name: "ISO 9899 Errno Shims",
             dependencies: [],
             publicHeadersPath: "include"
         ),
         .target(
-            name: "CISO9899String",
+            name: "ISO 9899 String Shims",
             dependencies: [],
             publicHeadersPath: "include"
         ),
@@ -48,12 +48,12 @@ let package = Package(
         // MARK: - C Shim Modules (Hosted)
 
         .target(
-            name: "CISO9899Ctype",
+            name: "ISO 9899 Ctype Shims",
             dependencies: [],
             publicHeadersPath: "include"
         ),
         .target(
-            name: "CISO9899Stdlib",
+            name: "ISO 9899 Stdlib Shims",
             dependencies: [],
             publicHeadersPath: "include"
         ),
@@ -65,9 +65,9 @@ let package = Package(
         .target(
             name: "ISO 9899 Core",
             dependencies: [
-                "CISO9899Math",
-                "CISO9899Errno",
-                "CISO9899String",
+                "ISO 9899 Math Shims",
+                "ISO 9899 Errno Shims",
+                "ISO 9899 String Shims",
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Ownership Primitives", package: "swift-ownership-primitives"),
             ],
@@ -83,8 +83,8 @@ let package = Package(
             name: "ISO 9899 Hosted",
             dependencies: [
                 "ISO 9899 Core",
-                "CISO9899Ctype",
-                "CISO9899Stdlib",
+                "ISO 9899 Ctype Shims",
+                "ISO 9899 Stdlib Shims",
             ],
             path: "Sources/ISO 9899 Hosted",
             swiftSettings: [

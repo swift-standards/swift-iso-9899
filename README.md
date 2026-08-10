@@ -221,7 +221,7 @@ let result = y.c.sqrt           // 1.22474487
 ## Implementation
 
 The package consists of:
-1. **CISO9899Math** - C module providing platform-agnostic wrappers
+1. **ISO_9899_Math_Shims** - C module providing platform-agnostic wrappers
 2. **ISO 9899** - Swift interface with clean API and documentation
 
 All functions are inlined for optimal performance.
