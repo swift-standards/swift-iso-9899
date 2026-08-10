@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.22 - General utilities <stdlib.h>
 
-internal import CISO9899Stdlib
+internal import ISO_9899_Stdlib_Shims
 
 extension ISO_9899 {
     /// Section 7.22: General utilities `<stdlib.h>`

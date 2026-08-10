@@ -25,7 +25,7 @@
 ///
 /// The package consists of two layers:
 ///
-/// 1. **CISO9899Math**: Platform-agnostic C module providing `static inline` wrappers
+/// 1. **ISO_9899_Math_Shims**: Platform-agnostic C module providing `static inline` wrappers
 /// 2. **ISO_9899**: Swift interface with clean API and comprehensive documentation
 ///
 /// ## Usage

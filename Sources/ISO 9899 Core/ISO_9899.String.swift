@@ -3,7 +3,7 @@
 //
 // Owned ISO C byte string
 
-public import CISO9899String
+public import ISO_9899_String_Shims
 
 extension ISO_9899 {
     /// Owned, null-terminated ISO C byte string.
