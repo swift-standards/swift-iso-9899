@@ -40,7 +40,8 @@ extension ISO_9899.String {
             #if DEBUG
                 precondition(
                     unsafe (pointer[count] == ISO_9899.String.terminator),
-                    "ISO_9899.String.Borrowed: pointer[count] must be the null terminator")
+                    "ISO_9899.String.Borrowed: pointer[count] must be the null terminator"
+                )
             #endif
             unsafe (self.pointer = pointer)
             self.count = count
@@ -80,7 +81,9 @@ extension ISO_9899.String.Borrowed {
         internal static let maxDebugScanLength = 16 * 1024 * 1024  // 16 MiB
 
         @usableFromInline
-        internal static func debugValidateTermination(_ pointer: UnsafePointer<ISO_9899.String.Char>) {
+        internal static func debugValidateTermination(
+            _ pointer: UnsafePointer<ISO_9899.String.Char>
+        ) {
             var current = unsafe pointer
             var scanned = 0
             while scanned < maxDebugScanLength {

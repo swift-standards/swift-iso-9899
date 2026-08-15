@@ -94,7 +94,11 @@ extension ISO_9899.Math {
     ///   - quo: Pointer to store the quotient bits
     /// - Returns: The remainder, with quotient stored in quo
     @inline(always)
-    public static func remquo(_ x: Double, _ y: Double, _ quo: UnsafeMutablePointer<Int32>) -> Double {
+    public static func remquo(
+        _ x: Double,
+        _ y: Double,
+        _ quo: UnsafeMutablePointer<Int32>
+    ) -> Double {
         return unsafe iso9899_remquo(x, y, quo)
     }
 
