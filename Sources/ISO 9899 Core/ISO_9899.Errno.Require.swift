@@ -13,7 +13,7 @@ extension ISO_9899.Errno {
     ///
     /// ```swift
     /// // For APIs where NULL indicates failure
-    /// let ptr = try C.Errno.Require.pointer { malloc(size) }
+    /// let ptr = try C.Errno.Require.rawPointer { malloc(size) }
     ///
     /// // For APIs where -1 indicates failure
     /// let fd = try C.Errno.Require.int { open(path, flags) }
@@ -51,7 +51,7 @@ extension ISO_9899.Errno.Require {
     /// - Returns: The non-NULL raw pointer.
     /// - Throws: `ISO_9899.Errno.Code` if the pointer is NULL.
     @inline(always)
-    public static func pointer(
+    public static func rawPointer(
         _ operation: () -> UnsafeMutableRawPointer?
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
         ISO_9899.Errno.clear()

@@ -217,7 +217,12 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             (-1.0, -1.0, -3 * Double.pi / 4, "third quadrant (-135°)"),
             (-1.0, 1.0, -Double.pi / 4, "fourth quadrant (-45°)"),
         ])
-        func `atan2 quadrant determination`(y: Double, x: Double, expected: Double, description: String) {
+        func `atan2 quadrant determination`(
+            y: Double,
+            x: Double,
+            expected: Double,
+            description: String
+        ) {
             let result = ISO_9899.Math.atan2(y, x)
             #expect(abs(result - expected) < 0.0001, "\(description)")
         }

@@ -60,7 +60,8 @@ extension ISO_9899.String {
         #if DEBUG
             precondition(
                 unsafe (pointer[count] == ISO_9899.String.terminator),
-                "ISO_9899.String: adopted buffer must be null-terminated")
+                "ISO_9899.String: adopted buffer must be null-terminated"
+            )
         #endif
         unsafe (self.pointer = pointer)
         self.count = count
@@ -143,7 +144,9 @@ extension ISO_9899.String {
     ///
     /// - Returns: A tuple of (pointer, count) where count excludes the null terminator.
     @inlinable
-    public consuming func take() -> (pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int) {
+    public consuming func take() -> (
+        pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int
+    ) {
         let result = unsafe (pointer, count)
         discard self
         return unsafe result
