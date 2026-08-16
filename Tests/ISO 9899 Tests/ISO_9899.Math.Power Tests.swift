@@ -15,7 +15,7 @@ struct `ISO_9899.Math - Power Functions` {
     @Suite
     struct `pow() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `pow with integer exponents arguments`: [(Double, Double, Double)] = [
             (2.0, 3.0, 8.0),
             (10.0, 2.0, 100.0),
             (3.0, 4.0, 81.0),
@@ -23,18 +23,22 @@ struct `ISO_9899.Math - Power Functions` {
             (-2.0, 2.0, 4.0),
             (-2.0, 3.0, -8.0),
             (-3.0, 4.0, 81.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`pow with integer exponents arguments`)
         func `pow with integer exponents`(base: Double, exponent: Double, expected: Double) {
             #expect(ISO_9899.Math.pow(base, exponent) == expected)
         }
 
-        @Test(arguments: [
+        private static let `pow with fractional exponents arguments`: [(Double, Double, Double)] = [
             (16.0, 0.5, 4.0),
             (27.0, 1.0 / 3.0, 3.0),
             (8.0, 1.0 / 3.0, 2.0),
             (4.0, 0.5, 2.0),
             (100.0, 0.5, 10.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`pow with fractional exponents arguments`)
         func `pow with fractional exponents`(base: Double, exponent: Double, expected: Double) {
             let result = ISO_9899.Math.pow(base, exponent)
             #expect(abs(result - expected) < 0.0001)
@@ -68,19 +72,23 @@ struct `ISO_9899.Math - Power Functions` {
     @Suite
     struct `pow() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `powf with integer exponents arguments`: [(Float, Float, Float)] = [
             (Float(2.0), Float(3.0), Float(8.0)),
             (Float(10.0), Float(2.0), Float(100.0)),
             (Float(3.0), Float(4.0), Float(81.0)),
-        ])
+        ]
+
+        @Test(arguments: Self.`powf with integer exponents arguments`)
         func `powf with integer exponents`(base: Float, exponent: Float, expected: Float) {
             #expect(ISO_9899.Math.pow(base, exponent) == expected)
         }
 
-        @Test(arguments: [
+        private static let `powf with fractional exponents arguments`: [(Float, Float, Float)] = [
             (Float(16.0), Float(0.5), Float(4.0)),
             (Float(4.0), Float(0.5), Float(2.0)),
-        ])
+        ]
+
+        @Test(arguments: Self.`powf with fractional exponents arguments`)
         func `powf with fractional exponents`(base: Float, exponent: Float, expected: Float) {
             let result = ISO_9899.Math.pow(base, exponent)
             #expect(abs(result - expected) < 0.001)
@@ -92,13 +100,15 @@ struct `ISO_9899.Math - Power Functions` {
     @Suite
     struct `sqrt() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `sqrt of perfect squares arguments`: [(Double, Double)] = [
             (4.0, 2.0),
             (9.0, 3.0),
             (16.0, 4.0),
             (25.0, 5.0),
             (100.0, 10.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`sqrt of perfect squares arguments`)
         func `sqrt of perfect squares`(input: Double, expected: Double) {
             #expect(ISO_9899.Math.sqrt(input) == expected)
         }
@@ -131,12 +141,14 @@ struct `ISO_9899.Math - Power Functions` {
     @Suite
     struct `sqrt() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `sqrtf of perfect squares arguments`: [(Float, Float)] = [
             (Float(4.0), Float(2.0)),
             (Float(9.0), Float(3.0)),
             (Float(16.0), Float(4.0)),
             (Float(25.0), Float(5.0)),
-        ])
+        ]
+
+        @Test(arguments: Self.`sqrtf of perfect squares arguments`)
         func `sqrtf of perfect squares`(input: Float, expected: Float) {
             #expect(ISO_9899.Math.sqrt(input) == expected)
         }

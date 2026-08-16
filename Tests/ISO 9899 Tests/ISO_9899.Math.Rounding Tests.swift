@@ -15,7 +15,7 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `ceil() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `ceil rounds toward positive infinity arguments`: [(Double, Double)] = [
             (2.3, 3.0),
             (2.0, 2.0),
             (2.9, 3.0),
@@ -26,7 +26,9 @@ struct `ISO_9899.Math - Rounding Functions` {
             (0.9, 1.0),
             (-0.1, 0.0),
             (-0.9, 0.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`ceil rounds toward positive infinity arguments`)
         func `ceil rounds toward positive infinity`(input: Double, expected: Double) {
             #expect(ISO_9899.Math.ceil(input) == expected)
         }
@@ -66,12 +68,14 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `ceil() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `ceilf rounds toward positive infinity arguments`: [(Float, Float)] = [
             (Float(2.3), Float(3.0)),
             (Float(2.0), Float(2.0)),
             (Float(-2.3), Float(-2.0)),
             (Float(-2.0), Float(-2.0)),
-        ])
+        ]
+
+        @Test(arguments: Self.`ceilf rounds toward positive infinity arguments`)
         func `ceilf rounds toward positive infinity`(input: Float, expected: Float) {
             #expect(ISO_9899.Math.ceil(input) == expected)
         }
@@ -90,7 +94,7 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `floor() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `floor rounds toward negative infinity arguments`: [(Double, Double)] = [
             (2.3, 2.0),
             (2.0, 2.0),
             (2.9, 2.0),
@@ -101,7 +105,9 @@ struct `ISO_9899.Math - Rounding Functions` {
             (0.9, 0.0),
             (-0.1, -1.0),
             (-0.9, -1.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`floor rounds toward negative infinity arguments`)
         func `floor rounds toward negative infinity`(input: Double, expected: Double) {
             #expect(ISO_9899.Math.floor(input) == expected)
         }
@@ -141,12 +147,14 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `floor() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `floorf rounds toward negative infinity arguments`: [(Float, Float)] = [
             (Float(2.3), Float(2.0)),
             (Float(2.0), Float(2.0)),
             (Float(-2.3), Float(-3.0)),
             (Float(-2.0), Float(-2.0)),
-        ])
+        ]
+
+        @Test(arguments: Self.`floorf rounds toward negative infinity arguments`)
         func `floorf rounds toward negative infinity`(input: Float, expected: Float) {
             #expect(ISO_9899.Math.floor(input) == expected)
         }
@@ -165,7 +173,7 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `round() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `round to nearest, ties away from zero arguments`: [(Double, Double)] = [
             (2.3, 2.0),
             (2.5, 3.0),  // ties away from zero
             (2.7, 3.0),
@@ -180,7 +188,9 @@ struct `ISO_9899.Math - Rounding Functions` {
             (-0.4, 0.0),
             (-0.5, -1.0),  // ties away from zero
             (-0.6, -1.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`round to nearest, ties away from zero arguments`)
         func `round to nearest, ties away from zero`(input: Double, expected: Double) {
             #expect(ISO_9899.Math.round(input) == expected)
         }
@@ -220,12 +230,14 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `round() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `roundf to nearest, ties away from zero arguments`: [(Float, Float)] = [
             (Float(2.3), Float(2.0)),
             (Float(2.5), Float(3.0)),  // ties away from zero
             (Float(-2.3), Float(-2.0)),
             (Float(-2.5), Float(-3.0)),  // ties away from zero
-        ])
+        ]
+
+        @Test(arguments: Self.`roundf to nearest, ties away from zero arguments`)
         func `roundf to nearest, ties away from zero`(input: Float, expected: Float) {
             #expect(ISO_9899.Math.round(input) == expected)
         }
@@ -244,7 +256,7 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `trunc() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `trunc rounds toward zero arguments`: [(Double, Double)] = [
             (2.3, 2.0),
             (2.9, 2.0),
             (2.0, 2.0),
@@ -255,7 +267,9 @@ struct `ISO_9899.Math - Rounding Functions` {
             (0.9, 0.0),
             (-0.1, 0.0),
             (-0.9, 0.0),
-        ])
+        ]
+
+        @Test(arguments: Self.`trunc rounds toward zero arguments`)
         func `trunc rounds toward zero`(input: Double, expected: Double) {
             #expect(ISO_9899.Math.trunc(input) == expected)
         }
@@ -295,12 +309,14 @@ struct `ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `trunc() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `truncf rounds toward zero arguments`: [(Float, Float)] = [
             (Float(2.3), Float(2.0)),
             (Float(2.9), Float(2.0)),
             (Float(-2.3), Float(-2.0)),
             (Float(-2.9), Float(-2.0)),
-        ])
+        ]
+
+        @Test(arguments: Self.`truncf rounds toward zero arguments`)
         func `truncf rounds toward zero`(input: Float, expected: Float) {
             #expect(ISO_9899.Math.trunc(input) == expected)
         }
