@@ -15,7 +15,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `sin() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `sin at key angles arguments`: [(Double, Double, Double)] = [
             (0.0, 0.0, 0.0001),
             (Double.pi / 6, 0.5, 0.0001),
             (30.0 * Double.pi / 180.0, 0.5, 0.0001),
@@ -24,7 +24,9 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             (Double.pi, 0.0, 0.0001),
             (3 * Double.pi / 2, -1.0, 0.0001),
             (2 * Double.pi, 0.0, 0.0001),
-        ])
+        ]
+
+        @Test(arguments: Self.`sin at key angles arguments`)
         func `sin at key angles`(angle: Double, expected: Double, tolerance: Double) {
             let result = ISO_9899.Math.sin(angle)
             #expect(abs(result - expected) < tolerance)
@@ -40,11 +42,13 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `sin() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `sinf at key angles arguments`: [(Float, Float, Float)] = [
             (Float(0.0), Float(0.0), Float(0.001)),
             (Float.pi / 2, Float(1.0), Float(0.001)),
             (Float.pi, Float(0.0), Float(0.001)),
-        ])
+        ]
+
+        @Test(arguments: Self.`sinf at key angles arguments`)
         func `sinf at key angles`(angle: Float, expected: Float, tolerance: Float) {
             let result = ISO_9899.Math.sin(angle)
             #expect(abs(result - expected) < tolerance)
@@ -56,7 +60,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `cos() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `cos at key angles arguments`: [(Double, Double, Double)] = [
             (0.0, 1.0, 0.0001),
             (Double.pi / 6, 0.8660254037844387, 0.0001),
             (Double.pi / 4, 0.7071067811865476, 0.0001),
@@ -66,7 +70,9 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             (Double.pi, -1.0, 0.0001),
             (3 * Double.pi / 2, 0.0, 0.0001),
             (2 * Double.pi, 1.0, 0.0001),
-        ])
+        ]
+
+        @Test(arguments: Self.`cos at key angles arguments`)
         func `cos at key angles`(angle: Double, expected: Double, tolerance: Double) {
             let result = ISO_9899.Math.cos(angle)
             #expect(abs(result - expected) < tolerance)
@@ -82,11 +88,13 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `cos() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `cosf at key angles arguments`: [(Float, Float, Float)] = [
             (Float(0.0), Float(1.0), Float(0.001)),
             (Float.pi / 2, Float(0.0), Float(0.001)),
             (Float.pi, Float(-1.0), Float(0.001)),
-        ])
+        ]
+
+        @Test(arguments: Self.`cosf at key angles arguments`)
         func `cosf at key angles`(angle: Float, expected: Float, tolerance: Float) {
             let result = ISO_9899.Math.cos(angle)
             #expect(abs(result - expected) < tolerance)
@@ -98,13 +106,15 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `tan() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `tan at key angles arguments`: [(Double, Double, Double)] = [
             (0.0, 0.0, 0.0001),
             (Double.pi / 6, 0.5773502691896257, 0.0001),
             (Double.pi / 4, 1.0, 0.0001),
             (45.0 * Double.pi / 180.0, 1.0, 0.0001),
             (Double.pi / 3, 1.7320508075688772, 0.0001),
-        ])
+        ]
+
+        @Test(arguments: Self.`tan at key angles arguments`)
         func `tan at key angles`(angle: Double, expected: Double, tolerance: Double) {
             let result = ISO_9899.Math.tan(angle)
             #expect(abs(result - expected) < tolerance)
@@ -120,10 +130,12 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `tan() - Float Variant` {
 
-        @Test(arguments: [
+        private static let `tanf at key angles arguments`: [(Float, Float, Float)] = [
             (Float(0.0), Float(0.0), Float(0.001)),
             (Float.pi / 4, Float(1.0), Float(0.001)),
-        ])
+        ]
+
+        @Test(arguments: Self.`tanf at key angles arguments`)
         func `tanf at key angles`(angle: Float, expected: Float, tolerance: Float) {
             let result = ISO_9899.Math.tan(angle)
             #expect(abs(result - expected) < tolerance)
@@ -135,14 +147,16 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `asin() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `asin of key values arguments`: [(Double, Double, Double)] = [
             (0.0, 0.0, 0.0001),
             (0.5, Double.pi / 6, 0.0001),
             (0.7071067811865476, Double.pi / 4, 0.0001),
             (1.0, Double.pi / 2, 0.0001),
             (-0.5, -Double.pi / 6, 0.0001),
             (-1.0, -Double.pi / 2, 0.0001),
-        ])
+        ]
+
+        @Test(arguments: Self.`asin of key values arguments`)
         func `asin of key values`(input: Double, expected: Double, tolerance: Double) {
             let result = ISO_9899.Math.asin(input)
             #expect(abs(result - expected) < tolerance)
@@ -160,14 +174,16 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `acos() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `acos of key values arguments`: [(Double, Double, Double)] = [
             (1.0, 0.0, 0.0001),
             (0.7071067811865476, Double.pi / 4, 0.0001),
             (0.5, Double.pi / 3, 0.0001),
             (0.0, Double.pi / 2, 0.0001),
             (-0.5, 2 * Double.pi / 3, 0.0001),
             (-1.0, Double.pi, 0.0001),
-        ])
+        ]
+
+        @Test(arguments: Self.`acos of key values arguments`)
         func `acos of key values`(input: Double, expected: Double, tolerance: Double) {
             let result = ISO_9899.Math.acos(input)
             #expect(abs(result - expected) < tolerance)
@@ -185,13 +201,15 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `atan() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `atan of key values arguments`: [(Double, Double, Double)] = [
             (0.0, 0.0, 0.0001),
             (0.5773502691896257, Double.pi / 6, 0.0001),
             (1.0, Double.pi / 4, 0.0001),
             (1.7320508075688772, Double.pi / 3, 0.0001),
             (-1.0, -Double.pi / 4, 0.0001),
-        ])
+        ]
+
+        @Test(arguments: Self.`atan of key values arguments`)
         func `atan of key values`(input: Double, expected: Double, tolerance: Double) {
             let result = ISO_9899.Math.atan(input)
             #expect(abs(result - expected) < tolerance)
@@ -209,14 +227,16 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `atan2() - Basic Functionality` {
 
-        @Test(arguments: [
+        private static let `atan2 quadrant determination arguments`: [(Double, Double, Double, String)] = [
             (0.0, 1.0, 0.0, "positive x-axis"),
             (1.0, 1.0, Double.pi / 4, "first quadrant (45°)"),
             (1.0, 0.0, Double.pi / 2, "positive y-axis"),
             (1.0, -1.0, 3 * Double.pi / 4, "second quadrant (135°)"),
             (-1.0, -1.0, -3 * Double.pi / 4, "third quadrant (-135°)"),
             (-1.0, 1.0, -Double.pi / 4, "fourth quadrant (-45°)"),
-        ])
+        ]
+
+        @Test(arguments: Self.`atan2 quadrant determination arguments`)
         func `atan2 quadrant determination`(
             y: Double,
             x: Double,
