@@ -227,7 +227,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `atan2() - Basic Functionality` {
 
-        private static let `atan2 quadrant determination arguments`: [(Double, Double, Double, String)] = [
+        private static let `atan2 quadrants`: [(Double, Double, Double, String)] = [
             (0.0, 1.0, 0.0, "positive x-axis"),
             (1.0, 1.0, Double.pi / 4, "first quadrant (45°)"),
             (1.0, 0.0, Double.pi / 2, "positive y-axis"),
@@ -236,7 +236,7 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             (-1.0, 1.0, -Double.pi / 4, "fourth quadrant (-45°)"),
         ]
 
-        @Test(arguments: Self.`atan2 quadrant determination arguments`)
+        @Test(arguments: Self.`atan2 quadrants`)
         func `atan2 quadrant determination`(
             y: Double,
             x: Double,
