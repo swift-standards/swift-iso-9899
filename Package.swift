@@ -4,11 +4,11 @@ import PackageDescription
 let package = Package(
     name: "swift-iso-9899",
     platforms: [
-        .macOS(.v26),
-        .iOS(.v26),
-        .tvOS(.v26),
-        .watchOS(.v26),
-        .visionOS(.v26),
+        .macOS("27"),
+        .iOS("27"),
+        .tvOS("27"),
+        .watchOS("27"),
+        .visionOS("27"),
     ],
     products: [
         // Core: errno, string memory ops, math - minimal libc surface
