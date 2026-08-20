@@ -473,7 +473,7 @@ extension Double.C {
     /// ```
     @_transparent
     public static func nan(_ tag: String = "") -> Double {
-        unsafe tag.withCString { unsafe ISO_9899.Math.nan($0) }
+        tag.withCString { unsafe ISO_9899.Math.nan($0) }
     }
 
     /// Returns self with the sign of another value

@@ -473,7 +473,7 @@ extension Float.C {
     /// ```
     @_transparent
     public static func nan(_ tag: String = "") -> Float {
-        unsafe tag.withCString { unsafe ISO_9899.Math.nanf($0) }
+        tag.withCString { unsafe ISO_9899.Math.nanf($0) }
     }
 
     /// Returns self with the sign of another value
