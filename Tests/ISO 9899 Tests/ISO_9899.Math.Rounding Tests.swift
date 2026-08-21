@@ -1,16 +1,9 @@
-// ISO_9899.Math.Rounding Tests.swift
-// swift-iso-9899
-//
-// Tests for ISO/IEC 9899 Section 7.12.9 - Rounding functions
-
 import Testing
 
 @testable import ISO_9899
 
 @Suite
 struct `ISO_9899.Math - Rounding Functions` {
-
-    // MARK: - ceil() Tests
 
     @Suite
     struct `ceil() - Basic Functionality` {
@@ -89,8 +82,6 @@ struct `ISO_9899.Math - Rounding Functions` {
         }
     }
 
-    // MARK: - floor() Tests
-
     @Suite
     struct `floor() - Basic Functionality` {
 
@@ -168,25 +159,23 @@ struct `ISO_9899.Math - Rounding Functions` {
         }
     }
 
-    // MARK: - round() Tests
-
     @Suite
     struct `round() - Basic Functionality` {
 
         private static let `round to nearest, ties away from zero arguments`: [(Double, Double)] = [
             (2.3, 2.0),
-            (2.5, 3.0),  // ties away from zero
+            (2.5, 3.0),
             (2.7, 3.0),
             (2.0, 2.0),
             (-2.3, -2.0),
-            (-2.5, -3.0),  // ties away from zero
+            (-2.5, -3.0),
             (-2.7, -3.0),
             (-2.0, -2.0),
             (0.4, 0.0),
-            (0.5, 1.0),  // ties away from zero
+            (0.5, 1.0),
             (0.6, 1.0),
             (-0.4, 0.0),
-            (-0.5, -1.0),  // ties away from zero
+            (-0.5, -1.0),
             (-0.6, -1.0),
         ]
 
@@ -232,9 +221,9 @@ struct `ISO_9899.Math - Rounding Functions` {
 
         private static let `roundf to nearest, ties away from zero arguments`: [(Float, Float)] = [
             (Float(2.3), Float(2.0)),
-            (Float(2.5), Float(3.0)),  // ties away from zero
+            (Float(2.5), Float(3.0)),
             (Float(-2.3), Float(-2.0)),
-            (Float(-2.5), Float(-3.0)),  // ties away from zero
+            (Float(-2.5), Float(-3.0)),
         ]
 
         @Test(arguments: Self.`roundf to nearest, ties away from zero arguments`)
@@ -250,8 +239,6 @@ struct `ISO_9899.Math - Rounding Functions` {
             #expect(ISO_9899.Math.round(Float.nan).isNaN)
         }
     }
-
-    // MARK: - trunc() Tests
 
     @Suite
     struct `trunc() - Basic Functionality` {
@@ -330,8 +317,6 @@ struct `ISO_9899.Math - Rounding Functions` {
         }
     }
 
-    // MARK: - Comparative Tests
-
     @Suite
     struct `Rounding Function Relationships` {
 
@@ -361,19 +346,16 @@ struct `ISO_9899.Math - Rounding Functions` {
 
         @Test
         func `round differs from trunc on halfway values`() {
-            // Positive halfway case
+
             #expect(ISO_9899.Math.round(2.5) != ISO_9899.Math.trunc(2.5))
             #expect(ISO_9899.Math.round(2.5) == 3.0)
             #expect(ISO_9899.Math.trunc(2.5) == 2.0)
 
-            // Negative halfway case
             #expect(ISO_9899.Math.round(-2.5) != ISO_9899.Math.trunc(-2.5))
             #expect(ISO_9899.Math.round(-2.5) == -3.0)
             #expect(ISO_9899.Math.trunc(-2.5) == -2.0)
         }
     }
-
-    // MARK: - Edge Cases
 
     @Suite
     struct `Rounding Edge Cases` {
@@ -407,14 +389,14 @@ struct `ISO_9899.Math - Rounding Functions` {
 
         @Test
         func `values just below integer`() {
-            let nearThree = 2.9999999999999996  // Just below 3.0
+            let nearThree = 2.9999999999999996
             #expect(ISO_9899.Math.ceil(nearThree) == 3.0)
             #expect(ISO_9899.Math.floor(nearThree) == 2.0)
         }
 
         @Test
         func `values just above integer`() {
-            let justAboveThree = 3.0000000000000004  // Just above 3.0
+            let justAboveThree = 3.0000000000000004
             #expect(ISO_9899.Math.ceil(justAboveThree) == 4.0)
             #expect(ISO_9899.Math.floor(justAboveThree) == 3.0)
         }

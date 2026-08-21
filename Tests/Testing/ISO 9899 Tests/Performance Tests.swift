@@ -1,14 +1,6 @@
-// ISO 9899 Performance Tests.swift
-// swift-iso-9899
-//
-// Performance benchmarks using the .timed() trait (swift-testing feature).
-// Parked under Tests/Testing/ — inert; not compiled by the parent package.
-
 import Testing
 
 @testable import ISO_9899
-
-// MARK: - Performance Tests
 
 extension `Performance Tests` {
 
@@ -69,7 +61,7 @@ extension `Performance Tests` {
 
         @Test(.timed(threshold: .milliseconds(200)))
         func `color space conversion simulation - 10K iterations`() {
-            // Simulate LCH to LAB conversion (used in HTMLColor)
+
             for i in 0..<10_000 {
                 let h = Double(i % 360)
                 let c = 50.0
@@ -81,7 +73,7 @@ extension `Performance Tests` {
 
         @Test(.timed(threshold: .milliseconds(100)))
         func `gamma correction simulation - 10K iterations`() {
-            // Simulate gamma correction (used in HTMLColor)
+
             for i in 0..<10_000 {
                 let c = Double(i % 256) / 255.0
                 _ = ISO_9899.Math.pow(c, 1.0 / 2.4)

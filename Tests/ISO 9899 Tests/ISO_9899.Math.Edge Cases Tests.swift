@@ -1,17 +1,9 @@
-// ISO_9899.Math.Edge Cases Tests.swift
-// swift-iso-9899
-//
-// Comprehensive edge case tests for ISO/IEC 9899 Section 7.12 mathematical functions
-// Testing special values, boundary conditions, and error cases
-
 import Testing
 
 @testable import ISO_9899
 
 @Suite
 struct `ISO_9899.Math - Edge Cases` {
-
-    // MARK: - Power Function Edge Cases
 
     @Suite
     struct `pow() - Special Values` {
@@ -210,8 +202,6 @@ struct `ISO_9899.Math - Edge Cases` {
         }
     }
 
-    // MARK: - Trigonometric Function Edge Cases
-
     @Suite
     struct `sin() - Special Values` {
 
@@ -249,7 +239,7 @@ struct `ISO_9899.Math - Edge Cases` {
         func `sin of subnormal value returns approximately the value`() {
             let subnormal = Double.leastNonzeroMagnitude
             let result = ISO_9899.Math.sin(subnormal)
-            // For very small x, sin(x) ≈ x
+
             #expect(abs(result - subnormal) < subnormal * 2)
         }
 
@@ -351,8 +341,6 @@ struct `ISO_9899.Math - Edge Cases` {
             #expect(result.isFinite)
         }
     }
-
-    // MARK: - Inverse Trigonometric Edge Cases
 
     @Suite
     struct `asin() - Special Values` {
@@ -598,8 +586,6 @@ struct `ISO_9899.Math - Edge Cases` {
         }
     }
 
-    // MARK: - Numerical Stability Tests
-
     @Suite
     struct `Numerical Stability` {
 
@@ -623,7 +609,7 @@ struct `ISO_9899.Math - Edge Cases` {
         func `sin maintains precision for very small angles`() {
             let angle = 1e-15
             let result = ISO_9899.Math.sin(angle)
-            // For very small x, sin(x) ≈ x with high precision
+
             #expect(abs(result - angle) < 1e-30)
         }
 
@@ -631,7 +617,7 @@ struct `ISO_9899.Math - Edge Cases` {
         func `cos maintains precision near zero angle`() {
             let angle = 1e-15
             let result = ISO_9899.Math.cos(angle)
-            // cos(x) ≈ 1 - x²/2 for small x
+
             let expected = 1.0 - (angle * angle) / 2.0
             #expect(abs(result - expected) < 1e-30)
         }
@@ -640,7 +626,7 @@ struct `ISO_9899.Math - Edge Cases` {
         func `tan maintains precision for small angles`() {
             let angle = 1e-15
             let result = ISO_9899.Math.tan(angle)
-            // For very small x, tan(x) ≈ x
+
             #expect(abs(result - angle) < 1e-30)
         }
 
@@ -648,7 +634,7 @@ struct `ISO_9899.Math - Edge Cases` {
         func `asin maintains precision near zero`() {
             let value = 1e-15
             let result = ISO_9899.Math.asin(value)
-            // For small x, asin(x) ≈ x
+
             #expect(abs(result - value) < 1e-30)
         }
 
@@ -663,13 +649,11 @@ struct `ISO_9899.Math - Edge Cases` {
         @Test
         func `pow with denormalized result`() {
             let base = 2.0
-            let exponent = -1074.0  // Near smallest normal number
+            let exponent = -1074.0
             let result = ISO_9899.Math.pow(base, exponent)
             #expect(result >= 0.0)
         }
     }
-
-    // MARK: - Float Precision Edge Cases
 
     @Suite
     struct `Float Precision Edge Cases` {

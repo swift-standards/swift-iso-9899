@@ -1,16 +1,9 @@
-// ISO_9899.Math.Power Tests.swift
-// swift-iso-9899
-//
-// Tests for ISO/IEC 9899 Section 7.12.7 - Power and absolute-value functions
-
 import Testing
 
 @testable import ISO_9899
 
 @Suite
 struct `ISO_9899.Math - Power Functions` {
-
-    // MARK: - pow() Tests
 
     @Suite
     struct `pow() - Basic Functionality` {
@@ -46,7 +39,7 @@ struct `ISO_9899.Math - Power Functions` {
 
         @Test
         func `pow with gamma correction exponent`() {
-            // Gamma correction: pow(c, 1/2.4)
+
             let c = 0.5
             let gamma = ISO_9899.Math.pow(c, 1.0 / 2.4)
             #expect(gamma > 0)
@@ -94,8 +87,6 @@ struct `ISO_9899.Math - Power Functions` {
             #expect(abs(result - expected) < 0.001)
         }
     }
-
-    // MARK: - sqrt() Tests
 
     @Suite
     struct `sqrt() - Basic Functionality` {

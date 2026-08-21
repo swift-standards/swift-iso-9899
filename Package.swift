@@ -11,12 +11,12 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        // Core: errno, string memory ops, math - minimal libc surface
+
         .library(
             name: "ISO 9899 Core",
             targets: ["ISO 9899 Core"]
         ),
-        // Full: Core + ctype, stdlib allocation/environment
+
         .library(
             name: "ISO 9899",
             targets: ["ISO 9899"]
@@ -33,7 +33,6 @@ let package = Package(
         ),
     ],
     targets: [
-        // MARK: - C Shim Modules (Core)
 
         .target(
             name: "ISO 9899 Math Shims",
@@ -51,8 +50,6 @@ let package = Package(
             publicHeadersPath: "include"
         ),
 
-        // MARK: - C Shim Modules (Hosted)
-
         .target(
             name: "ISO 9899 Ctype Shims",
             dependencies: [],
@@ -64,10 +61,6 @@ let package = Package(
             publicHeadersPath: "include"
         ),
 
-        // MARK: - Swift Targets
-
-        // Core: errno, string memory ops, math
-        // Suitable for minimal/embedded-like environments with OS libc
         .target(
             name: "ISO 9899 Core",
             dependencies: [
@@ -83,8 +76,6 @@ let package = Package(
             ]
         ),
 
-        // Hosted: Core + ctype, stdlib (allocation, environment)
-        // Requires full hosted OS environment
         .target(
             name: "ISO 9899 Hosted",
             dependencies: [
@@ -98,14 +89,12 @@ let package = Package(
             ]
         ),
 
-        // Umbrella: Re-exports everything
         .target(
             name: "ISO 9899",
             dependencies: ["ISO 9899 Hosted"],
             path: "Sources/ISO 9899"
         ),
 
-        // MARK: - Tests
         .testTarget(
             name: "ISO 9899 Tests",
             dependencies: [

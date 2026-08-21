@@ -1,16 +1,9 @@
-// ISO_9899.Math.Trigonometric Tests.swift
-// swift-iso-9899
-//
-// Tests for ISO/IEC 9899 Section 7.12.4 - Trigonometric functions
-
 import Testing
 
 @testable import ISO_9899
 
 @Suite
 struct `ISO_9899.Math - Trigonometric Functions` {
-
-    // MARK: - sin() Tests
 
     @Suite
     struct `sin() - Basic Functionality` {
@@ -54,8 +47,6 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             #expect(abs(result - expected) < tolerance)
         }
     }
-
-    // MARK: - cos() Tests
 
     @Suite
     struct `cos() - Basic Functionality` {
@@ -101,8 +92,6 @@ struct `ISO_9899.Math - Trigonometric Functions` {
         }
     }
 
-    // MARK: - tan() Tests
-
     @Suite
     struct `tan() - Basic Functionality` {
 
@@ -141,8 +130,6 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             #expect(abs(result - expected) < tolerance)
         }
     }
-
-    // MARK: - Inverse Trigonometric Functions
 
     @Suite
     struct `asin() - Basic Functionality` {
@@ -248,8 +235,6 @@ struct `ISO_9899.Math - Trigonometric Functions` {
         }
     }
 
-    // MARK: - Pythagorean Identity
-
     @Suite
     struct `Trigonometric Identities` {
 
@@ -271,32 +256,28 @@ struct `ISO_9899.Math - Trigonometric Functions` {
         }
     }
 
-    // MARK: - Color Space Conversion Use Cases
-
     @Suite
     struct `Color Space Conversion Examples` {
 
         @Test
         func `LCH to LAB conversion uses cos and sin`() {
-            // Simulating lchToRGB color space conversion
-            let h = 120.0  // Hue in degrees
-            let c = 50.0  // Chroma
 
-            // Convert to radians and compute
+            let h = 120.0
+            let c = 50.0
+
             let radians = h * Double.pi / 180.0
             let a = c * ISO_9899.Math.cos(radians)
             let b = c * ISO_9899.Math.sin(radians)
 
-            // Verify reasonable values
             #expect(abs(a) <= c)
             #expect(abs(b) <= c)
         }
 
         @Test
         func `OKLCH to OKLAB conversion uses cos and sin`() {
-            // Simulating oklchToRGB color space conversion
-            let h = 45.0  // Hue in degrees
-            let c = 0.15  // Chroma
+
+            let h = 45.0
+            let c = 0.15
 
             let radians = h * Double.pi / 180.0
             let a = c * ISO_9899.Math.cos(radians)
@@ -311,7 +292,6 @@ struct `ISO_9899.Math - Trigonometric Functions` {
             let c = 0.5
             let gamma = ISO_9899.Math.pow(c, 1.0 / 2.4)
 
-            // Result should be between 0 and 1
             #expect(gamma > 0.0)
             #expect(gamma < 1.0)
             #expect(gamma > c, "Gamma correction should brighten mid-tones")

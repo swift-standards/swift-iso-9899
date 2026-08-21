@@ -1,28 +1,14 @@
-// iso9899_errno.h
-// swift-iso-9899
-//
-// ISO/IEC 9899:2018 Section 7.5 - Errors <errno.h>
-//
-// errno is typically a macro that expands to a modifiable lvalue.
-// Swift cannot import C macros directly, so we wrap access in functions.
-
 #ifndef ISO9899_ERRNO_H
 #define ISO9899_ERRNO_H
 
 #include <errno.h>
 
-// Thread-local errno access
 static inline int iso9899_get_errno(void) { return errno; }
 static inline void iso9899_set_errno(int value) { errno = value; }
 
-// ISO C error codes (Section 7.5)
-// These are guaranteed by the standard
 static inline int iso9899_EDOM(void) { return EDOM; }
 static inline int iso9899_EILSEQ(void) { return EILSEQ; }
 static inline int iso9899_ERANGE(void) { return ERANGE; }
-
-// POSIX error codes (commonly available on all platforms)
-// These are widely supported but technically POSIX extensions
 
 #ifdef EACCES
 static inline int iso9899_EACCES(void) { return EACCES; }
@@ -144,4 +130,4 @@ static inline int iso9899_ENAMETOOLONG(void) { return ENAMETOOLONG; }
 static inline int iso9899_EOVERFLOW(void) { return EOVERFLOW; }
 #endif
 
-#endif // ISO9899_ERRNO_H
+#endif
