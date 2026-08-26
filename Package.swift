@@ -24,11 +24,11 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-error-primitives.git",
+            url: "https://github.com/swift-molecules/swift-error.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ownership-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ownership.git",
             branch: "main"
         ),
     ],
@@ -67,8 +67,8 @@ let package = Package(
                 "ISO 9899 Math Shims",
                 "ISO 9899 Errno Shims",
                 "ISO 9899 String Shims",
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Ownership Primitives", package: "swift-ownership-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Ownership", package: "swift-ownership"),
             ],
             path: "Sources/ISO 9899 Core",
             swiftSettings: [

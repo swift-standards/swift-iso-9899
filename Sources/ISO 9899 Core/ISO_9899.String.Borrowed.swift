@@ -1,4 +1,4 @@
-public import Ownership_Primitives
+public import Ownership
 
 extension ISO_9899.String: Ownership.Borrow.`Protocol` {}
 
